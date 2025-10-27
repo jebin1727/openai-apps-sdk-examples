@@ -19,6 +19,8 @@ import mcp.types as types
 from mcp.server.fastmcp import FastMCP
 from pydantic import BaseModel, ConfigDict, Field, ValidationError
 
+import sys
+print("Starting MCP server...", file=sys.stderr)
 
 @dataclass(frozen=True)
 class PizzazWidget:
@@ -307,6 +309,5 @@ except Exception:
 
 
 if __name__ == "__main__":
-    import uvicorn
-
-    uvicorn.run("main:app", host="0.0.0.0", port=8000)
+    # Run in stdio mode for MCP
+    mcp.run(transport="stdio")
